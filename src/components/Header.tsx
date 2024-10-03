@@ -4,7 +4,7 @@ import Modal from "./Modal";
 const Header = () => {
   return (
     <header className='w-full pt-12 bg-[white] pb-12'>
-      <div className=' bg-[white] w-full flex items-center justify-between px-[65px] tablet:px-0 mobile:justify-center'>
+      <div className=' bg-[white] w-full flex items-center justify-between mobile:justify-center'>
         <p className='text-[#1A1921] font-bold text-[20px] tracking-[-1px] mobile:hidden'>
           +998 99 999 99 99
         </p>

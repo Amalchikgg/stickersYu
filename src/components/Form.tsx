@@ -83,9 +83,11 @@ const Form = () => {
           />
           <button
             type='submit'
-            className='w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px]'
+            className={`w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px] ${
+              status && "!bg-[#027831]"
+            }`}
           >
-            Отправить
+            {status ? "Отправлено" : "Отправить"}
           </button>
         </div>
         <Image
@@ -96,7 +98,6 @@ const Form = () => {
           className='mt-[35px] tablet:hidden'
         />
       </div>
-      {status && <p>{status}</p>}
       <div className='bg-[#BBBBBB] h-[1px] w-full mb-[100px] tablet:mb-[60px]' />
     </form>
   );

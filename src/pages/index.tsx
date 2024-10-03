@@ -92,13 +92,6 @@ export default function Home() {
               className='ml-[-80px] tablet:w-[44px] tablet:h-[74px] tablet:ml-0 mobile:hidden'
             />
           </div>
-          <Image
-            src={"/icons/circleArrow.svg"}
-            alt='image'
-            width={60}
-            height={60}
-            className='absolute right-0 bottom-[-40px] tablet:hidden'
-          />
         </div>
         <p className='font-bold text-[#1A1921] text-[86px] tablet:text-[48px] mobile:text-[42px] mobile:tracking-[-2.1px] tablet:tracking-[-2.4px] tracking-[-4.3px] leading-[80px] tablet:leading-none mb-[43px] text-center mobile:text-start'>
           Скидки до 30%{" "}
