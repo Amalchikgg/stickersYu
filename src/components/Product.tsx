@@ -22,7 +22,6 @@ const Product = ({
   price,
   size,
   imageClass,
-  imgMobile,
   noneLeftBorder,
   noneRightBorder,
   className,
@@ -40,14 +39,14 @@ const Product = ({
         } ${noneLeftBorder && "border-l-0"} ${className}`}
       >
         <Image
-          src={`/icons/${img}.svg`}
+          src={`/images/${img}.jpg`}
           alt='product'
           width={size.w}
           height={size.h}
           className={`mobile:hidden ${imageClass}`}
         />
         <Image
-          src={`/icons/${imgMobile}.svg`}
+          src={`/images/${img}.jpg`}
           alt='product'
           width={size.w}
           height={size.h}

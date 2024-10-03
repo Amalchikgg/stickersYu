@@ -39,7 +39,7 @@ export default function Home() {
               className='mr-[-80px] tablet:w-[49px] tablet:h-[82px] tablet:mr-0 mobile:hidden'
             />
             <Image
-              src={"/icons/mainImage1.svg"}
+              src={"/images/mainImage.jpg"}
               alt='image'
               width={280}
               height={366}
@@ -48,7 +48,7 @@ export default function Home() {
               blurDataURL='/icons/mainImage1.svg'
             />
             <Image
-              src={"/icons/mobileMainImage1.svg"}
+              src={"/images/mobileMainImage.jpg"}
               alt='image1'
               width={221}
               height={157}
@@ -56,14 +56,14 @@ export default function Home() {
             />
           </div>
           <Image
-            src={"/icons/mainImage2.svg"}
+            src={"/images/mainImage2.jpg"}
             alt='image'
             width={538}
             height={703}
             className='tablet:w-[296px] tablet:h-[415px] mobile:hidden'
           />
           <Image
-            src={"/icons/mobileMainImage3.svg"}
+            src={"/images/mobileMainImage3.jpg"}
             alt='image'
             width={273}
             height={358}
@@ -71,14 +71,14 @@ export default function Home() {
           />
           <div className='flex items-center flex-col justify-between gap-[79px] tablet:gap-[53px]'>
             <Image
-              src={"/icons/mainImage3.svg"}
+              src={"/images/mainImage3.jpg"}
               alt='image'
               width={280}
               height={366}
               className='tablet:w-[130px] tablet:h-[180px] mobile:hidden'
             />
             <Image
-              src={"/icons/mobileMainImage2.svg"}
+              src={"/images/mobileMainImage2.jpg"}
               alt='image'
               width={90}
               height={234}

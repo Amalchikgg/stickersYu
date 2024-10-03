@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
         <div className='tablet:w-full tablet:flex tablet:justify-between mobile:items-center mobile:flex-col mobile:gap-y-[60px]'>
           <Link href={"#"} className='flex items-center gap-3'>
-            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-medium'>
+            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-semibold'>
               Telegram
             </p>
             <Image
@@ -46,7 +46,7 @@ const Footer = () => {
             />
           </Link>
           <Link href={"#"} className='flex items-center gap-3 my-5'>
-            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-medium'>
+            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-semibold'>
               Instagram
             </p>
             <Image
@@ -58,7 +58,7 @@ const Footer = () => {
             />
           </Link>
           <Link href={"#"} className='flex items-center gap-3'>
-            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-medium'>
+            <p className='text-[22px] text-[#1A1921] tracking-[-1.1px] leading-4 mobile:leading-none font-semibold'>
               Facebook
             </p>
             <Image
