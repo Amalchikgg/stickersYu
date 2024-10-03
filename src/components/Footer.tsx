@@ -13,9 +13,13 @@ const Footer = () => {
           height={106}
         />
         <div>
-          <div className='flex items-center gap-2 mb-5'>
+          <Link
+            href={`https://yandex.ru/maps/?text=ул.Кушкуприк 30.Ташкент.Узбекистан`}
+            target='_blank'
+            className='flex items-center gap-2 mb-5'
+          >
             <p className='text-[22px] text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] tracking-[-1.1px] leading-5'>
-              ул. Кушкуприк 30. Ташкент, Узбекистан
+              ул. Кушкуприк 30. Ташкент. Узбекистан
             </p>
             <Image
               src={"/icons/arrow.svg"}
@@ -24,7 +28,7 @@ const Footer = () => {
               height={14}
               className='mt-2'
             />
-          </div>
+          </Link>
           <p className='text-[22px] tablet:text-center text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] mb-5 tracking-[-1.1px] leading-6'>
             poryadokbyYuwki@gmail.com
           </p>
