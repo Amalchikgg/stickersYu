@@ -49,7 +49,7 @@ export default function Home() {
             />
             <Image
               src={"/icons/mobileMainImage1.svg"}
-              alt='image'
+              alt='image1'
               width={221}
               height={157}
               className='hidden mobile:block absolute left-0 bottom-[-74px] z-[-1]'
