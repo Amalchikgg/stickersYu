@@ -47,7 +47,13 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={
+        !!formData.name.length && !!formData.phone.length
+          ? handleSubmit
+          : () => {}
+      }
+    >
       <p
         className={`${vetren.className} tablet:hidden leading-[80px] text-[96px] tracking-[-4.8px] text-[#1A1921] mb-[81px] text-center`}
       >
@@ -82,7 +88,11 @@ const Form = () => {
             className='outline-none w-full my-[26px] mobile:my-4 h-[73px] mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]'
           />
           <button
-            type='submit'
+            type={
+              !!formData.name.length && !!formData.phone.length
+                ? "submit"
+                : "button"
+            }
             className={`w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px] ${
               status && "!bg-[#027831]"
             }`}
