@@ -42,7 +42,12 @@ const Modal = ({ className }: Props) => {
         </p>
         <div className='h-[1px] bg-[#BBBBBB] mb-8' />
         <div className='flex items-center justify-between tablet:flex-col tablet:gap-y-10 tablet:items-start'>
-          <Link href='#' className='flex items-center gap-4'>
+          <Link
+            onClick={() => $open(false)}
+            target='_blank'
+            href='#'
+            className='flex items-center gap-4'
+          >
             <Image
               src='/icons/telegram.svg'
               alt='telegram'
@@ -54,7 +59,14 @@ const Modal = ({ className }: Props) => {
               Telegram
             </p>
           </Link>
-          <Link href='#' className='flex items-center gap-4'>
+          <Link
+            onClick={() => $open(false)}
+            target='_blank'
+            href={
+              "https://www.instagram.com/poryadok_by_yu?igsh=MXV1dG1vdDloOG16Yw=="
+            }
+            className='flex items-center gap-4'
+          >
             <Image
               src='/icons/instagram.svg'
               alt='instagram'
@@ -66,7 +78,12 @@ const Modal = ({ className }: Props) => {
               Instagram
             </p>
           </Link>
-          <Link href='#' className='flex items-center gap-4'>
+          <Link
+            onClick={() => $open(false)}
+            target='_blank'
+            href='#'
+            className='flex items-center gap-4'
+          >
             <Image
               src='/icons/facebook.svg'
               alt='facebook'
