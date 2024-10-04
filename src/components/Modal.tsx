@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, KeyboardEvent } from "react";
 import Modalka from "react-modal";
 
 type FormData = {
@@ -18,17 +18,82 @@ const Modal = ({ className }: Props) => {
     name: "",
     phone: "+998 ",
   });
-
   const [status, setStatus] = useState<string>("");
+  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
+
+  const validatePhoneNumber = (phone: string) => {
+    const cleanedPhone = phone.replace(/\s+/g, ""); // Удаляем все пробелы
+    const phoneRegex = /^\+998\d{9}$/; // Проверка на +998 и 9 цифр
+    return phoneRegex.test(cleanedPhone);
+  };
+
+  const validateForm = () => {
+    const newErrors: { name?: string; phone?: string } = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Введите существующее имя";
+    }
+
+    if (!validatePhoneNumber(formData.phone)) {
+      newErrors.phone = "Введите существующий номер";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "phone") {
+      if (!value.startsWith("+998")) {
+        setFormData((prevData) => ({
+          ...prevData,
+          phone: "+998 ",
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          phone: value,
+        }));
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+
+    setErrors({ ...errors, [name]: undefined });
+  };
+
+  const handlePhoneKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (
+      !(
+        (e.key >= "0" && e.key <= "9") ||
+        e.key === "Backspace" ||
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowRight" ||
+        e.key === "Delete" ||
+        e.key === "Tab"
+      )
+    ) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhonePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const pastedData = e.clipboardData.getData("Text");
+    if (!/^\d+$/.test(pastedData)) {
+      e.preventDefault();
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     try {
       const response = await fetch("/api/sendToTelegram", {
@@ -42,7 +107,8 @@ const Modal = ({ className }: Props) => {
       const data = await response.json();
       if (response.ok) {
         setStatus("Сообщение успешно отправлено!");
-        setFormData({ name: "", phone: "" }); // Очистить форму после успешной отправки
+        setFormData({ name: "", phone: "+998" });
+        setErrors({});
       } else {
         setStatus("Ошибка отправки: " + data.error);
       }
@@ -81,33 +147,39 @@ const Modal = ({ className }: Props) => {
           Свяжись сейчас!
         </p>
         <div className='h-[1px] bg-[#BBBBBB] mb-8' />
-        <form
-          onSubmit={
-            !!formData.name.length && !!formData.phone.length
-              ? handleSubmit
-              : () => {}
-          }
-        >
+        <form onSubmit={handleSubmit}>
           <input
             name='name'
             value={formData.name}
             onChange={handleChange}
             placeholder='Ваше имя'
-            className='outline-none w-full h-[73px] mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]'
+            className={`outline-none w-full h-[73px] mobile:h-[42px] border ${
+              errors.name ? "border-[#9A0000]" : "border-[#696868]"
+            } pl-[21px] placeholder:text-[#949292]`}
           />
+          {errors.name && <p className='text-[#9A0000]'>{errors.name}</p>}
+
           <input
             name='phone'
+            type='tel'
+            maxLength={13}
             value={formData.phone}
             onChange={handleChange}
+            onKeyDown={handlePhoneKeyDown}
+            onPaste={handlePhonePaste}
             placeholder='Ваш номер'
-            className='outline-none w-full my-[20px] mobile:my-4 h-[73px] mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]'
+            className={`outline-none w-full my-[20px] mobile:my-4 h-[73px] mobile:h-[42px] border ${
+              errors.phone ? "border-[#9A0000]" : "border-[#696868]"
+            } pl-[21px] placeholder:text-[#949292]`}
           />
+          {errors.phone && (
+            <p className='text-[#9A0000] mt-[-20px] mb-2 mobile:mt-[-15px]'>
+              {errors.phone}
+            </p>
+          )}
+
           <button
-            type={
-              !!formData.name.length && !!formData.phone.length
-                ? "submit"
-                : "button"
-            }
+            type='submit'
             className={`w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px] ${
               status && "!bg-[#027831]"
             }`}
