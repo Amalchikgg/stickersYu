@@ -6,6 +6,7 @@ export default function Document() {
     <Html>
       <Head>
         <script
+          async
           dangerouslySetInnerHTML={{
             __html: `
     !function(f,b,e,v,n,t,s)
