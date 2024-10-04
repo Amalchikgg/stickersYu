@@ -1,8 +1,12 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Modalka from "react-modal";
+
+type FormData = {
+  name: string;
+  phone: string;
+};
 
 interface Props {
   className?: string;
@@ -10,6 +14,42 @@ interface Props {
 
 const Modal = ({ className }: Props) => {
   const [open, $open] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "+998 ",
+  });
+
+  const [status, setStatus] = useState<string>("");
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/sendToTelegram", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setStatus("Сообщение успешно отправлено!");
+        setFormData({ name: "", phone: "" }); // Очистить форму после успешной отправки
+      } else {
+        setStatus("Ошибка отправки: " + data.error);
+      }
+    } catch (error) {
+      setStatus("Произошла ошибка: " + (error as Error).message);
+    }
+  };
 
   return (
     <>
@@ -41,61 +81,40 @@ const Modal = ({ className }: Props) => {
           Свяжись сейчас!
         </p>
         <div className='h-[1px] bg-[#BBBBBB] mb-8' />
-        <div className='flex items-center justify-between tablet:flex-col tablet:gap-y-10 tablet:items-start'>
-          <Link
-            onClick={() => $open(false)}
-            target='_blank'
-            href='#'
-            className='flex items-center gap-4'
-          >
-            <Image
-              src='/icons/telegram.svg'
-              alt='telegram'
-              width={48}
-              height={48}
-              className='mobile:w-8 mobile:h-8'
-            />
-            <p className='text-black font-bold text-[32px] tracking-[-1.6px]'>
-              Telegram
-            </p>
-          </Link>
-          <Link
-            onClick={() => $open(false)}
-            target='_blank'
-            href={
-              "https://www.instagram.com/poryadok_by_yu?igsh=MXV1dG1vdDloOG16Yw=="
+        <form
+          onSubmit={
+            !!formData.name.length && !!formData.phone.length
+              ? handleSubmit
+              : () => {}
+          }
+        >
+          <input
+            name='name'
+            value={formData.name}
+            onChange={handleChange}
+            placeholder='Ваше имя'
+            className='outline-none w-full h-[73px] mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]'
+          />
+          <input
+            name='phone'
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder='Ваш номер'
+            className='outline-none w-full my-[20px] mobile:my-4 h-[73px] mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]'
+          />
+          <button
+            type={
+              !!formData.name.length && !!formData.phone.length
+                ? "submit"
+                : "button"
             }
-            className='flex items-center gap-4'
+            className={`w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px] ${
+              status && "!bg-[#027831]"
+            }`}
           >
-            <Image
-              src='/icons/instagram.svg'
-              alt='instagram'
-              width={48}
-              height={48}
-              className='mobile:w-8 mobile:h-8'
-            />
-            <p className='text-black font-bold text-[32px] tracking-[-1.6px]'>
-              Instagram
-            </p>
-          </Link>
-          <Link
-            onClick={() => $open(false)}
-            target='_blank'
-            href='#'
-            className='flex items-center gap-4'
-          >
-            <Image
-              src='/icons/facebook.svg'
-              alt='facebook'
-              width={48}
-              height={48}
-              className='mobile:w-8 mobile:h-8'
-            />
-            <p className='text-black font-bold text-[32px] tracking-[-1.6px]'>
-              Facebook
-            </p>
-          </Link>
-        </div>
+            {status ? "Заявка оставлена" : "Оставить заявку"}
+          </button>
+        </form>
       </Modalka>
     </>
   );

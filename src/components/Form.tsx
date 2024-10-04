@@ -11,7 +11,7 @@ type FormData = {
 const Form = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    phone: "",
+    phone: "+998 ",
   });
 
   const [status, setStatus] = useState<string>("");
@@ -97,7 +97,7 @@ const Form = () => {
               status && "!bg-[#027831]"
             }`}
           >
-            {status ? "Отправлено" : "Отправить"}
+            {status ? "Заявка оставлена" : "Оставить заявку"}
           </button>
         </div>
         <Image

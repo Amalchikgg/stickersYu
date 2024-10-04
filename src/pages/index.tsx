@@ -105,7 +105,7 @@ export default function Home() {
           <p className='text-[#1A1921] text-[86px] tablet:text-[64px] mobile:text-[40px] mobile:tracking-[-2px] tablet:tracking-[-3.2px] tablet:leading-none mobile:leading-[80px] leading-[80px] tracking-[-4.3px]'>
             До конца <span className='font-normal'>акции</span>
           </p>
-          <CountdownTimer initialTimeLeft='2024-12-31T23:59:59' />
+          <CountdownTimer />
         </div>
         <div className='bg-[#BBBBBB] h-[1px] w-full mb-[94px] tablet:mb-[59px] mobile:mb-[35px]' />
         <motion.div
