@@ -36,7 +36,7 @@ export default function Home() {
               alt='star'
               width={63.78}
               height={108.22}
-              className='mr-[-80px] tablet:w-[49px] tablet:h-[82px] tablet:mr-0 mobile:hidden'
+              className='mr-[-80px] tablet:w-[49px] tablet:h-[82px] tablet:mr-0 mobile:absolute mobile:w-[44px] mobile:h-[74px] mobile:top-[-37px] mobile:left-[15px]'
             />
             <Image
               src={"/images/mainImage.jpg"}
@@ -89,7 +89,7 @@ export default function Home() {
               alt='star'
               width={63.78}
               height={108.22}
-              className='ml-[-80px] tablet:w-[44px] tablet:h-[74px] tablet:ml-0 mobile:hidden'
+              className='ml-[-80px] tablet:w-[44px] tablet:h-[74px] tablet:ml-0 mobile:absolute mobile:w-[44px] mobile:h-[74px] mobile:bottom-[-37px] mobile:right-[2px]'
             />
           </div>
         </div>
