@@ -29,9 +29,9 @@ const Footer = () => {
               className='mt-2'
             />
           </Link>
-          <p className='text-[22px] tablet:text-center text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] mb-5 tracking-[-1.1px] leading-6'>
+          {/* <p className='text-[22px] tablet:text-center text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] mb-5 tracking-[-1.1px] leading-6'>
             poryadokbyYuwki@gmail.com
-          </p>
+          </p> */}
           <p className='text-[22px] tablet:text-center text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] tracking-[-1.1px] leading-6'>
             +998 77 120 07 70
           </p>
