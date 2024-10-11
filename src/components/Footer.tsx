@@ -33,7 +33,7 @@ const Footer = () => {
             poryadokbyYuwki@gmail.com
           </p>
           <p className='text-[22px] tablet:text-center text-[#1A1921] mobile:text-[18px] mobile:tracking-[-0.9px] tracking-[-1.1px] leading-6'>
-            +998 99 999 99 99
+            +998 77 120 07 70
           </p>
         </div>
         <div className='tablet:w-full tablet:flex tablet:justify-between mobile:items-center mobile:flex-col mobile:gap-y-[60px]'>
