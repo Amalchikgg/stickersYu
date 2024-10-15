@@ -6,12 +6,14 @@ const Footer = () => {
   return (
     <Container>
       <footer className='flex items-center justify-between pb-[90px] tablet:flex-col tablet:gap-y-[67px] mobile:gap-y-[57px]'>
-        <Image
-          src={"/icons/footerLogo.svg"}
-          alt='logo'
-          width={140}
-          height={106}
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/icons/footerLogo.svg"}
+            alt='logo'
+            width={140}
+            height={106}
+          />
+        </Link>
         <div>
           <Link
             href={`https://yandex.ru/maps/?text=ул.Кушкуприк 30.Ташкент.Узбекистан`}

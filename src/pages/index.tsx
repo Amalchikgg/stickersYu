@@ -3,7 +3,7 @@ import localfont from "next/font/local";
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import Image from "next/image";
-import Product from "@/components/Product";
+import ProductItem from "@/components/ProductItem";
 import Modal from "@/components/Modal";
 import Header from "@/components/Header";
 import Form from "@/components/Form";
@@ -29,76 +29,16 @@ export default function Home() {
     <div className={`${helvetic.className} fade-in`}>
       <Container>
         <Header />
-        <div className='flex items-center justify-between pt-20 tablet:pt-0 mb-[43px] mobile:mb-[118px] relative'>
-          <div className='flex items-center flex-col justify-between gap-[145px] tablet:gap-[49px]'>
-            <Image
-              src={"/icons/starBig.svg"}
-              alt='star'
-              width={63.78}
-              height={108.22}
-              className='mr-[-80px] tablet:w-[49px] tablet:h-[82px] tablet:mr-0 mobile:absolute mobile:w-[44px] mobile:h-[74px] mobile:top-[-37px] mobile:left-[15px]'
-            />
-            <Image
-              src={"/images/mainImage.jpg"}
-              alt='image'
-              width={280}
-              height={366}
-              className='tablet:w-[130px] tablet:h-[204px] mobile:hidden'
-              placeholder='blur'
-              blurDataURL='/icons/mainImage1.svg'
-            />
-            <Image
-              src={"/images/mobileMainImage.jpg"}
-              alt='image1'
-              width={221}
-              height={157}
-              className='hidden mobile:block absolute left-0 bottom-[-74px] z-[-1]'
-            />
+        <div className='bg-[#F6F6F6] py-10 px-[30px] mb-[50px]'>
+          <p className='font-medium text-[#1A1921] text-[64px] tablet:text-[48px] mobile:text-[36px] mobile:tracking-[-1.8px] tablet:tracking-[-2.4px] tracking-[-4.3px] leading-[60px] tablet:leading-none mb-[55px] tablet:mb-8 mobile:text-start'>
+            Скидки до 30%{" "}
+            <span className='font-normal'>
+              на нужные товары для вашего дома!
+            </span>
+          </p>
+          <div className='flex justify-centec'>
+            <Modal className='!w-full !h-[90px] !bg-transparent !text-[36px] !tracking-[-1.8px] mobile:!h-[48px] mobile:!text-[20px] mobile:!tracking-[-1px]' />
           </div>
-          <Image
-            src={"/images/mainImage2.jpg"}
-            alt='image'
-            width={538}
-            height={703}
-            className='tablet:w-[296px] tablet:h-[415px] mobile:hidden'
-          />
-          <Image
-            src={"/images/mobileMainImage3.jpg"}
-            alt='image'
-            width={273}
-            height={358}
-            className=' mobile:block hidden'
-          />
-          <div className='flex items-center flex-col justify-between gap-[79px] tablet:gap-[53px]'>
-            <Image
-              src={"/images/mainImage3.jpg"}
-              alt='image'
-              width={280}
-              height={366}
-              className='tablet:w-[130px] tablet:h-[180px] mobile:hidden'
-            />
-            <Image
-              src={"/images/mobileMainImage2.jpg"}
-              alt='image'
-              width={90}
-              height={234}
-              className='hidden mobile:block absolute right-0 top-[-25px] z-[2]'
-            />
-            <Image
-              src={"/icons/starBig.svg"}
-              alt='star'
-              width={63.78}
-              height={108.22}
-              className='ml-[-80px] tablet:w-[44px] tablet:h-[74px] tablet:ml-0 mobile:absolute mobile:w-[44px] mobile:h-[74px] mobile:bottom-[-37px] mobile:right-[2px]'
-            />
-          </div>
-        </div>
-        <p className='font-bold text-[#1A1921] text-[86px] tablet:text-[48px] mobile:text-[42px] mobile:tracking-[-2.1px] tablet:tracking-[-2.4px] tracking-[-4.3px] leading-[80px] tablet:leading-none mb-[43px] text-center mobile:text-start'>
-          Скидки до 30%{" "}
-          <span className='font-normal'>на нужные товары для вашего дома!</span>
-        </p>
-        <div className='flex justify-center mb-[88px] tablet:mb-[61px] mobile:mb-12'>
-          <Modal className='!w-[500px] !h-[90px] !text-[36px] !tracking-[-1.8px] tablet:!w-[350px] mobile:!w-[343px] tablet:!h-[74px] tablet:!text-[24px] tablet:!tracking-[-1.2px]' />
         </div>
         <div className='bg-[#BBBBBB] h-[1px] w-full mb-[85px] tablet:mb-[50px] mobile:mb-5' />
         <div className='flex items-center justify-between mb-[88px] tablet:mb-[50px] tablet:flex-col tablet:gap-[50px] mobile:mb-5 mobile:gap-y-5'>
@@ -113,26 +53,27 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 1 }}
           transition={{ duration: 1 }}
+          id='stickers'
         >
-          <div className='flex items-end tablet:items-center pl-[200px] tablet:pl-[98px] mobile:pl-0 mobile:justify-center relative gap-[51px] mb-3 mobile:mb-0'>
+          <div className='flex items-end tablet:items-center pl-[115px] tablet:pl-[120px] mobile:pl-0 mobile:justify-center relative gap-[95px] mb-[13px] mobile:mb-0'>
             <p
-              className={`${vetren.className} text-[86px] tablet:text-[72px] mobile:text-[64px] mobile:tracking-[-3.2px] tablet:tracking-[-3.6px] tracking-[-4.3px] leading-[80px] text-[#1A1921]`}
+              className={`${vetren.className} text-[128px] tablet:text-[72px] mobile:text-[64px] mobile:tracking-[-3.2px] tablet:tracking-[-3.6px] tracking-[-6.4px] leading-[80px] text-[#1A1921]`}
             >
-              РАСПРОДАЖА
+              НАКЛЕЙКИ
             </p>
             <Image
               src={"/icons/starSmall.svg"}
-              width={60}
+              width={72}
               height={82}
               alt='star'
-              className='mb-1 tablet:mb-0 mobile:hidden'
+              className='mb-3 tablet:mb-0 mobile:hidden tablet:w-[52px]'
             />
             <Image
               src={"/icons/circleLine.svg"}
               alt='line'
-              width={610}
-              height={585.72}
-              className='absolute left-[310px] top-[-6px] tablet:top-[-18px] z-[-1] tablet:w-[588.39px] tablet:h-[185.72px] tablet:left-[10px] mobile:hidden'
+              width={585}
+              height={88}
+              className='absolute left-[226px] top-[-4px] tablet:top-[-18px] z-[-1] tablet:w-[588.39px] tablet:h-[185.72px] tablet:left-[10px] mobile:hidden'
             />
             <Image
               src={"/icons/mobileCircleLine1.svg"}
@@ -142,59 +83,85 @@ export default function Home() {
               className='hidden mobile:block absolute top-[22px] z-[-1]'
             />
           </div>
-          <div className='flex justify-end mb-[68px] mobile:pl-4 tablet:mb-[86px] mobile:mb-[35px] pr-[100px] tablet:pr-0 mobile:justify-between'>
-            <Image
-              src={"/icons/starSmall.svg"}
-              width={52}
-              height={52}
-              alt='star'
-              className='mobile:block hidden'
-            />
-            <p className='text-[#1A1921] text-[20px] tracking-[-1px] w-[580px] tablet:w-[370px] leading-5 mobile:text-base mobile:tracking-[-0.8px] mobile:w-[239px] mobile:leading-4'>
-              Превратите каждое пространство в уютный уголок с нашими
-              изысканными предложениями.
+          <div className='flex justify-end mb-[68px] mobile:pl-4 tablet:mb-[86px] mobile:mb-[20px] pr-[100px] tablet:pr-1 mobile:justify-between'>
+            <p className='text-[#1A1921] text-[20px] tablet:text-[16px] tabet:tracking-[-0.8px] tracking-[-1px] w-[651px] tablet:w-[370px] leading-5 mobile:text-[14px] mobile:tracking-[-0.7px] mobile:w-full mobile:leading-4'>
+              Стильный и лаконичный способ добавить изящную нотку
+              организованности и индивидуальности в хранение ваших продуктов.
             </p>
           </div>
         </motion.div>
-        <div className='flex mb-[140px] tablet:mb-[56px] mobile:mb-[49px] tablet:flex-wrap tablet:gap-y-6 mobile:gap-y-8'>
-          <Product
-            size={{ w: 284, h: 380 }}
+        <div className='flex flex-wrap justify-between mb-[140px] gap-y-20 tablet:mb-[110px] mobile:mb-[49px]  tablet:gap-y-[50px] tablet:gap-x-[30px] mobile:gap-x-[15px] mobile:gap-y-3'>
+          <ProductItem
             img='product1'
             lost='2'
             text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
-            imageClass='mobile:!h-[230px] mobile:w-[172px] mobile:mt-[-20px]'
             imgMobile='mobileProduct1'
-            noneRightBorder
+            hoverImage='sticker2'
+            id={1}
           />
-          <Product
-            size={{ w: 284, h: 380 }}
+          <ProductItem
             img='product2'
             lost='2'
             text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct2'
-            imageClass='mobile:!h-[210px] mobile:w-[166px]'
-            className='border-r-0 tablet:border-r-[1px]'
+            hoverImage='sticker3'
+            id={2}
           />
-          <Product
-            size={{ w: 284, h: 380 }}
+          <ProductItem
             img='product3'
             lost='2'
             text='Наклейки для подписи (комплект, 6 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct3'
-            imageClass='mobile:!h-[204px] mobile:w-[162px] mobile:mt-[-20px]'
+            hoverImage='sticker2'
+            id={3}
           />
-          <Product
-            size={{ w: 284, h: 380 }}
+          <ProductItem
             img='product4'
             lost='4'
             text='Наклейки для подписи (черные, квадратные 12 шт.)'
             price={{ first: "75 000 сум", second: "50 000 сум" }}
             imgMobile='mobileProduct4'
-            imageClass='mobile:!h-[236px] mobile:w-[156px] mobile:mt-[-20px]'
-            noneLeftBorder
+            hoverImage='sticker3'
+            id={4}
+          />
+          <ProductItem
+            img='product5'
+            lost='2'
+            text='Наклейки для подписи на контейнер или банку (бежевые, фигурные 8 шт.)'
+            price={{ first: "65 000 сум", second: "40 000 сум" }}
+            imgMobile='productMobile5'
+            hoverImage='sticker2'
+            id={5}
+          />
+          <ProductItem
+            img='product6'
+            lost='2'
+            text='Наклейки для подписи на контейнер или банку (бежевые, овальные 8 шт.)'
+            price={{ first: "65 000 сум", second: "40 000 сум" }}
+            imgMobile='productMobile6'
+            hoverImage='sticker3'
+            id={6}
+          />
+          <ProductItem
+            img='product7'
+            lost='4'
+            text='Наклейки для подписи (комплект, черные 4 шт.)'
+            price={{ first: "30 000 сум", second: "25 000 сум" }}
+            imgMobile='productMobile7'
+            hoverImage='sticker2'
+            id={7}
+          />
+          <ProductItem
+            img='product8'
+            lost='4'
+            text='Наклейки рулон (бежевые, 500 шт.)'
+            price={{ first: "300 000 сум", second: "200 000 сум" }}
+            imgMobile='productMobile8'
+            hoverImage='sticker3'
+            id={8}
           />
         </div>
         <motion.div
@@ -203,85 +170,220 @@ export default function Home() {
           viewport={{ once: true, amount: 1 }}
           transition={{ duration: 1 }}
           className='tablet:relative'
+          id='caskets'
         >
-          <div className='flex relative items-center justify-between mb-[14px] mobile:mb-6 tablet:mb-0 pl-[85px] pr-[70px] mobile:p-0 mobile:justify-center tablet:pl-[107px] tablet:pr-0'>
+          <div className='flex relative items-center justify-between mb-[14px] mobile:mb-0 tablet:mb-0 pl-[85px] pr-[212px] mobile:p-0 mobile:pr-0 mobile:justify-center tablet:pl-[55px] tablet:pr-[65px]'>
             <Image
               src={"/icons/starSmall.svg"}
               alt='star'
               width={100}
               height={106}
-              className='tablet:hidden'
+              className='tablet:w-[72px] mobile:hidden'
             />
             <p
-              className={`${vetren.className} text-[86px] mobile:text-[39px] mobile:tracking-[-1.95px] tracking-[-4.3px] leading-[80px] mobile:leading-none text-[#1A1921] tablet:text-[64px] tablet:tracking-[-3.2px]`}
+              className={`${vetren.className} text-[128px] tracking-[-6.4px] leading-[80px] mobile:leading-none text-[#1A1921] tablet:text-[72px] tablet:tracking-[-3.6px]`}
             >
-              СОЗДАЙ СЕБЕ КОМФОРТ
+              ШКАТУЛКИ
             </p>
             <Image
               src={"/icons/circleLine2.svg"}
               alt='line'
               width={1101}
               height={145}
-              className='absolute z-[-1] left-[45px] top-[-40px] tablet:left-0 tablet:top-[-2px] mobile:hidden'
+              className='absolute z-[-1] left-[45px] top-[-47px] tablet:left-0 tablet:top-[-2px] mobile:hidden'
             />
             <Image
-              src={"/icons/mobileLine2.svg"}
+              src={"/icons/mobileCircleLine2.svg"}
               alt='line'
-              width={316}
-              height={47}
-              className='absolute z-[-1] left-3 top-[0px] mobile:block hidden'
+              width={376}
+              height={48}
+              className='absolute z-[-1] left-0 top-[13px] mobile:block hidden'
             />
           </div>
-          <p className='text-[#1A1921] text-[20px] tracking-[-1px] ml-[100px] mobile:leading-none tablet:ml-0 mb-[51px] tablet:mb-[62px] mobile:mb-[49px] mobile:w-[187px] mobile:text-[16px] mobile:tracking-[-0.8px] mobile:text-end'>
-            Создайте уют в каждом уголке вашего дома.
+          <p className='text-[#1A1921] text-[20px] tablet:text-[16px] tablet:w-[450px] tablet:tracking-[-0.8px] leading-none w-[580px] tracking-[-1px] ml-[85px] mobile:leading-none tablet:ml-0 mb-[91px] tablet:mb-[62px] mobile:mb-[20px] mobile:w-full mobile:text-[14px] mobile:tracking-[-0.7px]'>
+            Изящный аксессуар, в котором эстетика сочетается с практичностью,
+            создавая уют и сохраняя ваши сокровенные вещи.
           </p>
-          <Image
-            src={"/icons/starSmall.svg"}
-            alt='star'
-            width={72}
-            height={72}
-            className='tablet:block hidden absolute right-[55px] bottom-[-18px] mobile:w-[52px] mobile:bottom-[-5px]'
-          />
         </motion.div>
-        <div className='flex mb-[96px] px-[30px] tablet:gap-y-6 tablet:mb-[56px] tablet:flex-wrap tablet:px-0 mobile:gap-y-8 mobile:mb-11'>
-          <Product
-            size={{ w: 284, h: 378 }}
-            img='product5'
+        <div className='flex mb-[140px] justify-center gap-[21px] px-[30px] tablet:gap-y-[50px] tablet:gap-x-[30px] tablet:mb-[118px] tablet:flex-wrap tablet:px-0 mobile:gap-x-[15px] mobile:gap-y-0 mobile:mb-11'>
+          <ProductItem
+            img='product9'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (бежевые, фигурные 8 шт.)'
-            price={{ first: "65 000 сум", second: "40 000 сум" }}
+            text='Карманная шкатулка для украшений '
+            price={{ first: "100 000 сум", second: "50 000 сум" }}
             imgMobile='productMobile5'
-            imageClass='mobile:!h-[230px] mobile:w-[172px] mobile:mt-[-20px]'
-            noneRightBorder
+            hoverImage='caskets3'
+            id={9}
           />
-          <Product
-            size={{ w: 284, h: 378 }}
-            img='product6'
+          <ProductItem
+            img='product10'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (бежевые, овальные 8 шт.)'
-            price={{ first: "65 000 сум", second: "40 000 сум" }}
+            text='Дорожная шкатулка (Черная)'
+            price={{ first: "100 000 сум", second: "55 000 сум" }}
             imgMobile='productMobile6'
-            imageClass='mobile:!h-[234px] mobile:w-[134px] mobile:mt-[-20px]'
-            className='border-r-0 tablet:border-r-[1px]'
+            hoverImage='caskets4'
+            id={10}
           />
-          <Product
-            size={{ w: 220, h: 360 }}
-            img='product7'
-            lost='4'
-            text='Наклейки для подписи (комплект, черные 4 шт.)'
-            price={{ first: "30 000 сум", second: "25 000 сум" }}
+          <ProductItem
+            img='product11'
+            lost='2'
+            text='Дорожная шкатулка (Розовая, с зеркалом)'
+            price={{ first: "150 000 сум", second: "100 000 сум" }}
             imgMobile='productMobile7'
-            imageClass='mobile:!h-[242px] mobile:w-[148px] mobile:mt-[-20px]'
+            hoverImage='caskets5'
+            id={11}
           />
-          <Product
-            size={{ w: 262, h: 370 }}
-            img='product8'
-            lost='4'
-            text='Наклейки рулон (бежевые, 500 шт.)'
-            price={{ first: "300 000 сум", second: "200 000 сум" }}
-            imgMobile='productMobile8'
-            imageClass='mobile:!h-[210px] mobile:w-[162px] mobile:mt-[-20px]'
-            noneLeftBorder
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 1 }}
+          transition={{ duration: 1 }}
+          id='goodies'
+        >
+          <div className='mb-3 pl-[170px] tablet:pl-[125px] tablet:mb-0 relative mobile:pl-[63px]'>
+            <p
+              className={`${vetren.className} text-[128px] tracking-[-6.4px] leading-[80px] mobile:leading-none text-[#1A1921] tablet:text-[72px] tablet:tracking-[-3.6px]`}
+            >
+              НИШТЯКИ
+            </p>
+            <Image
+              src={"/icons/circleLine3.svg"}
+              alt='line'
+              width={575}
+              height={88}
+              className='absolute z-[-1] left-[267px] top-[-3px] tablet:left-0 tablet:top-[2px] mobile:hidden tablet:w-[585px]'
+            />
+            <Image
+              src={"/icons/mobileCircleLine2.svg"}
+              alt='line'
+              width={376}
+              height={48}
+              className='absolute z-[-1] left-0 top-[17px] mobile:block hidden'
+            />
+            <Image
+              src={"/icons/rotateStar.svg"}
+              alt='star'
+              width={58}
+              height={35}
+              className='absolute right-[403px] top-[53px] mobile:hidden tablet:top-[25px] tablet:w-[52px] tablet:right-[118px] tablet:rotate-[-15deg]'
+            />
+          </div>
+          <div className='flex justify-end pr-[4.5px] mobile:pr-[18px]'>
+            <p className='text-[20px] text-[#1A1921] tracking-[-1px] mobile:text-end mb-[120px] mobile:mb-5 w-[580px] tablet:w-[370px] mobile:w-full tablet:text-[16px] tablet:tracking-[-0.8px] leading-none'>
+              Превратите каждое пространство в уютный уголок с нашими
+              изысканными предложениями.
+            </p>
+          </div>
+        </motion.div>
+        <div className='flex flex-wrap gap-y-20 justify-between mb-[140px] mobile:mb-10 tablet:gap-y-[50px] tablet:gap-x-[30px] mobile:gap-x-[15px] mobile:gap-y-0'>
+          <ProductItem
+            img='product12'
+            lost='2'
+            text='Силиконновый зажим для крепления проводов (черный)'
+            price={{ first: "85 000 сум", second: "65 000 сум" }}
+            imgMobile='productMobile5'
+            hoverImage='sticker2'
+            id={12}
+          />
+          <ProductItem
+            img='product13'
+            lost='2'
+            text='Силиконновый зажим для крепления проводов (белый)'
+            price={{ first: "85 000 сум", second: "65 000 сум" }}
+            imgMobile='productMobile6'
+            hoverImage='sticker2'
+            id={13}
+          />
+          <ProductItem
+            img='product14'
+            lost='2'
+            text='Зажим для проводов (14 шт.)'
+            price={{ first: "85 000 сум", second: "70 000 сум" }}
+            imgMobile='productMobile7'
+            hoverImage='sticker2'
+            id={14}
+          />
+          <ProductItem
+            img='product15'
+            lost='2'
+            text='Проволочный зажим (9 шт.)'
+            price={{ first: "65 000 сум", second: "35 000 сум" }}
+            imgMobile='productMobile5'
+            hoverImage='sticker2'
+            id={15}
+          />
+          <ProductItem
+            img='product16'
+            lost='2'
+            text='Разделитель для холодильных полок (2шт, большой)'
+            price={{ first: "75 000 сум", second: "60 000 сум" }}
+            imgMobile='productMobile6'
+            hoverImage='sticker2'
+            id={16}
+          />
+          <ProductItem
+            img='product17'
+            lost='2'
+            text='Наклейки для ковров (фигурные 4 шт.)'
+            price={{ first: "150 000 сум", second: "100 000 сум" }}
+            imgMobile='productMobile7'
+            hoverImage='sticker2'
+            id={17}
+          />
+          <ProductItem
+            img='product18'
+            lost='2'
+            text='Щетка для удаления пятен'
+            price={{ first: "90 000 сум", second: "80 000 сум" }}
+            imgMobile='productMobile5'
+            hoverImage='sticker2'
+            id={18}
+          />
+          <ProductItem
+            img='product19'
+            lost='2'
+            text='Лопатка для сыпучих (2 шт.)'
+            price={{ first: "85 000 сум", second: "50 000 сум" }}
+            imgMobile='productMobile6'
+            hoverImage='sticker2'
+            id={19}
+          />
+          <ProductItem
+            img='product20'
+            lost='2'
+            text='Разделитель для холодильных полок (2 шт.)'
+            price={{ first: "85 000 сум", second: "40 000 сум" }}
+            imgMobile='productMobile7'
+            hoverImage='sticker2'
+            id={20}
+          />
+          <ProductItem
+            img='product21'
+            lost='2'
+            text='Зажим, крючок для полотенец (2 шт.)'
+            price={{ first: "75 000 сум", second: "40 000 сум" }}
+            imgMobile='productMobile5'
+            hoverImage='sticker2'
+            id={21}
+          />
+          <ProductItem
+            img='product22'
+            lost='2'
+            text='Держатель для швабры'
+            price={{ first: "65 000 сум", second: "50 000 сум" }}
+            imgMobile='productMobile6'
+            hoverImage='sticker2'
+            id={22}
+          />
+          <ProductItem
+            img='product23'
+            lost='2'
+            text='Силиконовые наклейки для вешалок (20 шт.)'
+            price={{ first: "75 000 сум", second: "40 000 сум" }}
+            imgMobile='productMobile7'
+            hoverImage='sticker2'
+            id={23}
           />
         </div>
         <div className='bg-[#BBBBBB] h-[1px] w-full mb-[100px] tablet:mb-10' />

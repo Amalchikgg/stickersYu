@@ -1,28 +1,57 @@
 import Image from "next/image";
 import Modal from "./Modal";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className='w-full pt-12 bg-[white] pb-12 mobile:pb-[66px] mobile:pt-7'>
-      <div className=' bg-[white] w-full flex items-center justify-between mobile:justify-center mobile:gap-[51px]'>
-        <p className='text-[#1A1921] font-bold text-[20px] tracking-[-1px] mobile:hidden'>
-          +998 77 120 07 70
-        </p>
-        <Image
-          src={"/icons/logo.svg"}
-          alt='logo'
-          width={232}
-          height={75}
-          className='tablet:w-[173.85px] tablet:h-[56.37px] mobile:hidden'
-        />
-        <Image
-          src={"/icons/footerLogo.svg"}
-          alt='logo'
-          width={116}
-          height={88}
-          className='hidden mobile:block'
-        />
-        <Modal className='tablet:w-[130px]' />
+    <header className='w-full pt-12 bg-[white] pb-12 mobile:pb-[36px] mobile:pt-7'>
+      <div className='bg-[white] w-full flex items-center justify-between mobile:justify-center mobile:gap-x-[141px]'>
+        <Link href={"/"} className='mobile:hidden'>
+          <Image
+            src={"/icons/logo.svg"}
+            alt='logo'
+            width={232}
+            height={75}
+            className='tablet:w-[173.85px] tablet:h-[56.37px] mobile:hidden'
+          />
+        </Link>
+        <Link href={"/"}>
+          <Image
+            src={"/icons/footerLogo.svg"}
+            alt='logo'
+            width={116}
+            height={88}
+            className='hidden mobile:block flex-shrink-0'
+          />
+        </Link>
+        <div className='flex items-center gap-10 tablet:gap-5'>
+          <a
+            href='#stickers'
+            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+          >
+            Наклейки
+          </a>
+          <a
+            href='#caskets'
+            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+          >
+            Шкатулки
+          </a>
+          <a
+            href='#goodies'
+            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+          >
+            Ништяки
+          </a>
+          <Image
+            src={"/icons/burger.svg"}
+            alt='burger'
+            width={40}
+            height={40}
+            className='hidden tablet:block flex-shrink-0 w-10 h-10'
+          />
+          <Modal className='tablet:w-[130px] mobile:hidden' />
+        </div>
       </div>
     </header>
   );

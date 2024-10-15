@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -13,4 +17,29 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.swiper-pagination {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center !important;
+}
+
+.main_bullet {
+  border-radius: 100% !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border: 1px solid #d9d9d9 !important;
+  margin-right: 7px;
+}
+
+.main_bullet_active {
+  background-color: #ac672e !important;
+  border-radius: 100% !important;
+  width: 10px !important;
+  height: 10px !important;
+  border: none !important;
 }
