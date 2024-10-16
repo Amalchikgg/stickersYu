@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { helvetic } from ".";
 import Container from "@/components/Container";
 import Header from "@/components/Header";
@@ -24,7 +24,11 @@ const Product = () => {
   const [activeSlide, setActiveSlide] = useState(0); // Текущее положение слайда
   const [randomProducts, setRandomProducts] = useState<ProductType[]>([]);
 
-  const getProduct = products.find((item) => item.id == Number(id));
+  const getProduct = useMemo(() => {
+    setIsPlaying(false);
+    $isPlayingMobile(false);
+    return products.find((item) => item.id == Number(id));
+  }, [id]);
 
   useEffect(() => {
     // Получить массив продуктов, исключив текущий
@@ -74,40 +78,42 @@ const Product = () => {
                 onClick={() => slideRef.current?.slidePrev()}
                 className='cursor-pointer absolute left-5 top-[265px] mobile:top-[156px] z-10 mobile:left-[18px]'
               />
-              <SwiperSlide>
-                {!isPlaying ? (
-                  <div className='relative'>
-                    <img
-                      src={`/images/${getProduct?.preview}.jpg`}
-                      alt='Video Preview'
-                      onClick={handlePlayVideo}
+              {getProduct && (
+                <SwiperSlide>
+                  {!isPlaying ? (
+                    <div className='relative'>
+                      <img
+                        src={`/images/${getProduct?.preview}.jpg`}
+                        alt='Video Preview'
+                        onClick={handlePlayVideo}
+                        className='w-[560px] h-[558px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
+                      />
+                      <Image
+                        src={"/icons/play.svg"}
+                        alt='play'
+                        width={60}
+                        height={60}
+                        className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
+                        onClick={handlePlayVideo}
+                      />
+                    </div>
+                  ) : (
+                    <video
+                      width='100%'
+                      controls
+                      autoPlay
+                      preload='metadata'
                       className='w-[560px] h-[558px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
-                    />
-                    <Image
-                      src={"/icons/play.svg"}
-                      alt='play'
-                      width={60}
-                      height={60}
-                      className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
-                      onClick={handlePlayVideo}
-                    />
-                  </div>
-                ) : (
-                  <video
-                    width='100%'
-                    controls
-                    autoPlay
-                    preload='metadata'
-                    className='w-[560px] h-[558px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
-                  >
-                    <source
-                      src={`/video/${getProduct?.video}.mp4`}
-                      type='video/mp4'
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                )}
-              </SwiperSlide>
+                    >
+                      <source
+                        src={`/video/${getProduct?.video}.mp4`}
+                        type='video/mp4'
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </SwiperSlide>
+              )}
               {getProduct?.images.map((img) => (
                 <SwiperSlide key={img}>
                   <Image
