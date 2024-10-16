@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import Modal from "./Modal";
 import Link from "next/link";
+import Burger from "./Burger";
 
 const Header = () => {
   return (
@@ -43,13 +45,7 @@ const Header = () => {
           >
             Ништяки
           </a>
-          <Image
-            src={"/icons/burger.svg"}
-            alt='burger'
-            width={40}
-            height={40}
-            className='hidden tablet:block flex-shrink-0 w-10 h-10'
-          />
+          <Burger />
           <Modal className='tablet:w-[130px] mobile:hidden' />
         </div>
       </div>

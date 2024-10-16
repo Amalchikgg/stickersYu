@@ -129,10 +129,10 @@ const Product = () => {
                 className='cursor-pointer absolute right-5 top-[265px] mobile:top-[156px] mobile:right-[18px] z-10'
               />
             </Swiper>
-            <div className='flex items-center gap-5 '>
+            <div className='flex items-center gap-5 overflow-auto'>
               <div
                 onClick={() => slideRef.current?.slideTo(0)}
-                className='relative'
+                className='relative flex-shrink-0'
               >
                 <Image
                   src={"/icons/play2.svg"}
@@ -186,15 +186,6 @@ const Product = () => {
               {getProduct?.description}
             </p>
             <div className='hidden mobile:flex mb-10 flex-col gap-10'>
-              {getProduct?.images.map((img) => (
-                <Image
-                  key={img}
-                  src={`/images/${img}.jpg`}
-                  alt='product'
-                  width={342}
-                  height={342}
-                />
-              ))}
               {!isPlayingMobile ? (
                 <div className='relative'>
                   <img
@@ -227,6 +218,15 @@ const Product = () => {
                   Your browser does not support the video tag.
                 </video>
               )}
+              {getProduct?.images.map((img) => (
+                <Image
+                  key={img}
+                  src={`/images/${img}.jpg`}
+                  alt='product'
+                  width={342}
+                  height={342}
+                />
+              ))}
             </div>
             {!!getProduct?.adventages?.length && (
               <div className='mb-10'>
