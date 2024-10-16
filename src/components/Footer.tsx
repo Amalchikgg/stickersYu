@@ -38,7 +38,7 @@ const Footer = () => {
             +998 77 120 07 70
           </p>
         </div>
-        <div className='tablet:w-full tablet:flex tablet:justify-between mobile:items-center mobile:flex-col mobile:gap-y-[60px]'>
+        <div className='tablet:w-full tablet:flex tablet:justify-between mobile:items-center mobile:flex-col mobile:gap-y-[32px]'>
           <Link
             target='_blank'
             href={"https://t.me/Poryadchniymagazin"}

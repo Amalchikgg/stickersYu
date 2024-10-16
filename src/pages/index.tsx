@@ -94,7 +94,7 @@ export default function Home() {
           <ProductItem
             img='product1'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
+            text='Наклейки для подписи (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct1'
             hoverImage='sticker4'
@@ -103,7 +103,7 @@ export default function Home() {
           <ProductItem
             img='product2'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
+            text='Наклейки для подписи (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct2'
             hoverImage='sticker5'
@@ -130,7 +130,7 @@ export default function Home() {
           <ProductItem
             img='product5'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (бежевые, фигурные 8 шт.)'
+            text='Наклейки для подписи (бежевые, фигурные 8 шт.)'
             price={{ first: "65 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile5'
             hoverImage='sticker6'
@@ -139,7 +139,7 @@ export default function Home() {
           <ProductItem
             img='product6'
             lost='2'
-            text='Наклейки для подписи на контейнер или банку (бежевые, овальные 8 шт.)'
+            text='Наклейки для подписи (бежевые, овальные 8 шт.)'
             price={{ first: "65 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile6'
             hoverImage='sticker7'
@@ -301,7 +301,7 @@ export default function Home() {
             text='Зажим для проводов (14 шт.)'
             price={{ first: "85 000 сум", second: "70 000 сум" }}
             imgMobile='productMobile7'
-            hoverImage='product14'
+            hoverImage='goodies14'
             id={14}
           />
           <ProductItem
@@ -310,7 +310,7 @@ export default function Home() {
             text='Проволочный зажим (9 шт.)'
             price={{ first: "65 000 сум", second: "35 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='goodiesPreview9'
+            hoverImage='goodies16'
             id={15}
           />
           <ProductItem

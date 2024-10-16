@@ -11,6 +11,24 @@ const Burger = () => {
     $active(!active);
   };
 
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ) => {
+    e.preventDefault(); // Отключаем стандартное поведение <a> для ручного управления
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Прокручиваем до элемента
+      targetElement.scrollIntoView({ behavior: "smooth" });
+
+      // Ожидаем завершения анимации и закрываем меню
+      setTimeout(() => {
+        $active(false);
+      }, 500); // Отложенное закрытие меню после 500 мс
+    }
+  };
+
   useEffect(() => {
     if (active) {
       document.body.classList.add("no-scroll");
@@ -24,7 +42,7 @@ const Burger = () => {
   }, [active]);
   return (
     <>
-      <button onClick={handleActive}>
+      <button onClick={handleActive} className='bg-transparent'>
         <Image
           src={"/icons/burger.svg"}
           alt='menu'
@@ -53,22 +71,22 @@ const Burger = () => {
           </div>
           <div className='flex flex-col'>
             <a
-              onClick={handleActive}
               href='#stickers'
+              onClick={(e) => handleLinkClick(e, "stickers")}
               className='text-[27px] font-bold text-[#1A1921] tracking-[-1.35px]'
             >
               Наклейки
             </a>
             <a
-              onClick={handleActive}
               href='#caskets'
+              onClick={(e) => handleLinkClick(e, "caskets")}
               className='text-[27px] my-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Шкатулки
             </a>
             <a
-              onClick={handleActive}
               href='#goodies'
+              onClick={(e) => handleLinkClick(e, "goodies")}
               className='text-[27px] mb-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Ништяки
