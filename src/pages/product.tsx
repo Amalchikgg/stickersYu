@@ -78,7 +78,7 @@ const Product = () => {
                 onClick={() => slideRef.current?.slidePrev()}
                 className='cursor-pointer absolute left-5 top-[265px] mobile:top-[156px] z-10 mobile:left-[18px]'
               />
-              {getProduct && (
+              {getProduct?.video && (
                 <SwiperSlide>
                   {!isPlaying ? (
                     <div className='relative'>
@@ -136,27 +136,29 @@ const Product = () => {
               />
             </Swiper>
             <div className='flex items-center gap-5 overflow-auto'>
-              <div
-                onClick={() => slideRef.current?.slideTo(0)}
-                className='relative flex-shrink-0'
-              >
-                <Image
-                  src={"/icons/play2.svg"}
-                  alt='play'
-                  width={27}
-                  height={27}
-                  className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
-                />
-                <Image
-                  src={`/images/${getProduct?.preview}.jpg`}
-                  alt='product'
-                  width={70}
-                  height={70}
-                  className={`hover:border border-[#000000] cursor-pointer ${
-                    activeSlide == 0 && "border border-black"
-                  }`}
-                />
-              </div>
+              {getProduct?.video && (
+                <div
+                  onClick={() => slideRef.current?.slideTo(0)}
+                  className='relative flex-shrink-0'
+                >
+                  <Image
+                    src={"/icons/play2.svg"}
+                    alt='play'
+                    width={27}
+                    height={27}
+                    className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
+                  />
+                  <Image
+                    src={`/images/${getProduct?.preview}.jpg`}
+                    alt='product'
+                    width={70}
+                    height={70}
+                    className={`hover:border border-[#000000] cursor-pointer ${
+                      activeSlide == 0 && "border border-black"
+                    }`}
+                  />
+                </div>
+              )}
               {getProduct?.images.map((img, i) => (
                 <Image
                   key={i}
@@ -192,38 +194,40 @@ const Product = () => {
               {getProduct?.description}
             </p>
             <div className='hidden mobile:flex mb-10 flex-col gap-10'>
-              {!isPlayingMobile ? (
-                <div className='relative'>
-                  <img
-                    src={`/images/${getProduct?.preview}.jpg`}
-                    alt='Video Preview'
-                    onClick={() => $isPlayingMobile(true)}
+              <div className={!getProduct?.video ? "hidden" : ""}>
+                {!isPlayingMobile ? (
+                  <div className='relative'>
+                    <img
+                      src={`/images/${getProduct?.preview}.jpg`}
+                      alt='Video Preview'
+                      onClick={() => $isPlayingMobile(true)}
+                      className='w-[560px] h-[578px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
+                    />
+                    <Image
+                      src={"/icons/play.svg"}
+                      alt='play'
+                      width={60}
+                      height={60}
+                      className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
+                      onClick={() => $isPlayingMobile(true)}
+                    />
+                  </div>
+                ) : (
+                  <video
+                    width='100%'
+                    controls
+                    autoPlay
+                    preload='metadata'
                     className='w-[560px] h-[578px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
-                  />
-                  <Image
-                    src={"/icons/play.svg"}
-                    alt='play'
-                    width={60}
-                    height={60}
-                    className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
-                    onClick={() => $isPlayingMobile(true)}
-                  />
-                </div>
-              ) : (
-                <video
-                  width='100%'
-                  controls
-                  autoPlay
-                  preload='metadata'
-                  className='w-[560px] h-[578px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
-                >
-                  <source
-                    src={`/video/${getProduct?.video}.mp4`}
-                    type='video/mp4'
-                  />
-                  Your browser does not support the video tag.
-                </video>
-              )}
+                  >
+                    <source
+                      src={`/video/${getProduct?.video}.mp4`}
+                      type='video/mp4'
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
               {getProduct?.images.map((img) => (
                 <Image
                   key={img}
