@@ -97,7 +97,7 @@ export default function Home() {
             text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct1'
-            hoverImage='sticker2'
+            hoverImage='sticker4'
             id={1}
           />
           <ProductItem
@@ -106,7 +106,7 @@ export default function Home() {
             text='Наклейки для подписи на контейнер или банку (черные, фигурные 8 шт.)'
             price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='mobileProduct2'
-            hoverImage='sticker3'
+            hoverImage='sticker5'
             id={2}
           />
           <ProductItem
@@ -133,7 +133,7 @@ export default function Home() {
             text='Наклейки для подписи на контейнер или банку (бежевые, фигурные 8 шт.)'
             price={{ first: "65 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='sticker2'
+            hoverImage='sticker6'
             id={5}
           />
           <ProductItem
@@ -142,7 +142,7 @@ export default function Home() {
             text='Наклейки для подписи на контейнер или банку (бежевые, овальные 8 шт.)'
             price={{ first: "65 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile6'
-            hoverImage='sticker3'
+            hoverImage='sticker7'
             id={6}
           />
           <ProductItem
@@ -160,7 +160,7 @@ export default function Home() {
             text='Наклейки рулон (бежевые, 500 шт.)'
             price={{ first: "300 000 сум", second: "200 000 сум" }}
             imgMobile='productMobile8'
-            hoverImage='sticker3'
+            hoverImage='sticker8'
             id={8}
           />
         </div>
@@ -210,7 +210,7 @@ export default function Home() {
             img='product9'
             lost='2'
             text='Карманная шкатулка для украшений '
-            price={{ first: "100 000 сум", second: "50 000 сум" }}
+            price={{ first: "150 000 сум", second: "50 000 сум" }}
             imgMobile='productMobile5'
             hoverImage='caskets3'
             id={9}
@@ -219,7 +219,7 @@ export default function Home() {
             img='product10'
             lost='2'
             text='Дорожная шкатулка (Черная)'
-            price={{ first: "100 000 сум", second: "55 000 сум" }}
+            price={{ first: "150 000 сум", second: "55 000 сум" }}
             imgMobile='productMobile6'
             hoverImage='caskets4'
             id={10}
@@ -281,18 +281,18 @@ export default function Home() {
             img='product12'
             lost='2'
             text='Силиконновый зажим для крепления проводов (черный)'
-            price={{ first: "85 000 сум", second: "65 000 сум" }}
+            price={{ first: "100 000 сум", second: "65 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='sticker2'
+            hoverImage='goodies1'
             id={12}
           />
           <ProductItem
             img='product13'
             lost='2'
             text='Силиконновый зажим для крепления проводов (белый)'
-            price={{ first: "85 000 сум", second: "65 000 сум" }}
+            price={{ first: "100 000 сум", second: "65 000 сум" }}
             imgMobile='productMobile6'
-            hoverImage='sticker2'
+            hoverImage='goodies1'
             id={13}
           />
           <ProductItem
@@ -301,7 +301,7 @@ export default function Home() {
             text='Зажим для проводов (14 шт.)'
             price={{ first: "85 000 сум", second: "70 000 сум" }}
             imgMobile='productMobile7'
-            hoverImage='sticker2'
+            hoverImage='product14'
             id={14}
           />
           <ProductItem
@@ -310,70 +310,70 @@ export default function Home() {
             text='Проволочный зажим (9 шт.)'
             price={{ first: "65 000 сум", second: "35 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='sticker2'
+            hoverImage='goodiesPreview9'
             id={15}
           />
           <ProductItem
             img='product16'
             lost='2'
             text='Разделитель для холодильных полок (2шт, большой)'
-            price={{ first: "75 000 сум", second: "60 000 сум" }}
+            price={{ first: "90 000 сум", second: "60 000 сум" }}
             imgMobile='productMobile6'
-            hoverImage='sticker2'
+            hoverImage='goodies2'
             id={16}
           />
           <ProductItem
             img='product17'
             lost='2'
             text='Наклейки для ковров (фигурные 4 шт.)'
-            price={{ first: "150 000 сум", second: "100 000 сум" }}
+            price={{ first: "200 000 сум", second: "100 000 сум" }}
             imgMobile='productMobile7'
-            hoverImage='sticker2'
+            hoverImage='goodies4'
             id={17}
           />
           <ProductItem
             img='product18'
             lost='2'
             text='Щетка для удаления пятен'
-            price={{ first: "90 000 сум", second: "80 000 сум" }}
+            price={{ first: "150 000 сум", second: "80 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='sticker2'
+            hoverImage='goodies5'
             id={18}
           />
           <ProductItem
             img='product19'
             lost='2'
             text='Лопатка для сыпучих (2 шт.)'
-            price={{ first: "85 000 сум", second: "50 000 сум" }}
+            price={{ first: "130 000 сум", second: "50 000 сум" }}
             imgMobile='productMobile6'
-            hoverImage='sticker2'
+            hoverImage='goodies7'
             id={19}
           />
           <ProductItem
             img='product20'
             lost='2'
             text='Разделитель для холодильных полок (2 шт.)'
-            price={{ first: "85 000 сум", second: "40 000 сум" }}
+            price={{ first: "45 000 сум", second: "35 000 сум" }}
             imgMobile='productMobile7'
-            hoverImage='sticker2'
+            hoverImage='goodies8'
             id={20}
           />
           <ProductItem
             img='product21'
             lost='2'
             text='Зажим, крючок для полотенец (2 шт.)'
-            price={{ first: "75 000 сум", second: "40 000 сум" }}
+            price={{ first: "90 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile5'
-            hoverImage='sticker2'
+            hoverImage='goodies12'
             id={21}
           />
           <ProductItem
             img='product22'
             lost='2'
             text='Держатель для швабры'
-            price={{ first: "65 000 сум", second: "50 000 сум" }}
+            price={{ first: "150 000 сум", second: "50 000 сум" }}
             imgMobile='productMobile6'
-            hoverImage='sticker2'
+            hoverImage='goodies13'
             id={22}
           />
           <ProductItem
@@ -382,7 +382,7 @@ export default function Home() {
             text='Силиконовые наклейки для вешалок (20 шт.)'
             price={{ first: "75 000 сум", second: "40 000 сум" }}
             imgMobile='productMobile7'
-            hoverImage='sticker2'
+            hoverImage='product23'
             id={23}
           />
         </div>

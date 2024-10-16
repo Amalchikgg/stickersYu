@@ -47,8 +47,8 @@ const ProductItem = ({
           className={`absolute right-0 top-0 bottom-0 left-0 h-[290px] tablet:h-[300px] tablet:object-contain opacity-0 group-hover:opacity-100 transition-all duration-500 tablet:w-[290px] mobile:w-[164px] mobile:h-[250px]`}
         />
       </div>
-      <div className='h-[189px] tablet:h-[191px] flex flex-col justify-between'>
-        <div className='mobile:mb-2'>
+      <div className='h-[200px] flex flex-col justify-between'>
+        <div className=''>
           <p className='text-[20px] text-black mb-3 tracking-[-1px] leading-[18px] w-[257px] mobile:text-[17px] mobile:leading-[14px] mobile:tracking-[-0.8px] mobile:w-[157px]'>
             {text}
           </p>
@@ -67,7 +67,7 @@ const ProductItem = ({
           </div>
           {/* <Modal className='!w-[180px] !h-[44px] mobile:!w-[152px] mobile:!h-[40px]' /> */}
           <Link href={`/product?param=${id}`}>
-            <button className='w-full h-[44px] border mobile:h-9 mobile:text-[16px] mobile:tracking-[-1px] border-[#1A1921] text-[#1A1921] font-bold text-[20px] tracking-[-1px]'>
+            <button className='w-full bg-white h-[44px] border mobile:h-9 mobile:text-[16px] mobile:tracking-[-1px] border-[#1A1921] text-[#1A1921] font-bold text-[20px] tracking-[-1px]'>
               Подробнее
             </button>
           </Link>

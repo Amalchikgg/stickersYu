@@ -74,17 +74,6 @@ const Product = () => {
                 onClick={() => slideRef.current?.slidePrev()}
                 className='cursor-pointer absolute left-5 top-[265px] mobile:top-[156px] z-10 mobile:left-[18px]'
               />
-              {getProduct?.images.map((img) => (
-                <SwiperSlide key={img}>
-                  <Image
-                    src={`/images/${img}.jpg`}
-                    alt='product'
-                    width={560}
-                    height={560}
-                    className='w-[560px] h-[560px] object-contain tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
-                  />
-                </SwiperSlide>
-              ))}
               <SwiperSlide>
                 {!isPlaying ? (
                   <div className='relative'>
@@ -111,11 +100,26 @@ const Product = () => {
                     preload='metadata'
                     className='w-[560px] h-[558px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
                   >
-                    <source src={"/video/video1.mp4"} type='video/mp4' />
+                    <source
+                      src={`/video/${getProduct?.video}.mp4`}
+                      type='video/mp4'
+                    />
                     Your browser does not support the video tag.
                   </video>
                 )}
               </SwiperSlide>
+              {getProduct?.images.map((img) => (
+                <SwiperSlide key={img}>
+                  <Image
+                    src={`/images/${img}.jpg`}
+                    alt='product'
+                    width={560}
+                    height={560}
+                    className='w-[560px] h-[560px] object-contain tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
+                  />
+                </SwiperSlide>
+              ))}
+
               <Image
                 onClick={() => slideRef.current?.slideNext()}
                 src={"/icons/swipeRight.svg"}
@@ -126,20 +130,10 @@ const Product = () => {
               />
             </Swiper>
             <div className='flex items-center gap-5 '>
-              {getProduct?.images.map((img, i) => (
-                <Image
-                  key={i}
-                  src={`/images/${img}.jpg`}
-                  alt='product'
-                  width={70}
-                  height={70}
-                  className={`hover:border border-[#000000] cursor-pointer ${
-                    activeSlide == i && "border border-black"
-                  }`}
-                  onClick={() => slideRef.current?.slideTo(i)}
-                />
-              ))}
-              <div className='relative'>
+              <div
+                onClick={() => slideRef.current?.slideTo(0)}
+                className='relative'
+              >
                 <Image
                   src={"/icons/play2.svg"}
                   alt='play'
@@ -153,14 +147,23 @@ const Product = () => {
                   width={70}
                   height={70}
                   className={`hover:border border-[#000000] cursor-pointer ${
-                    activeSlide == getProduct?.images.length &&
-                    "border border-black"
+                    activeSlide == 0 && "border border-black"
                   }`}
-                  onClick={() =>
-                    slideRef.current?.slideTo(getProduct?.images.length ?? 0)
-                  }
                 />
               </div>
+              {getProduct?.images.map((img, i) => (
+                <Image
+                  key={i}
+                  src={`/images/${img}.jpg`}
+                  alt='product'
+                  width={70}
+                  height={70}
+                  className={`hover:border border-[#000000] cursor-pointer ${
+                    activeSlide == i + 1 && "border border-black"
+                  }`}
+                  onClick={() => slideRef.current?.slideTo(i + 1)}
+                />
+              ))}
             </div>
           </div>
           <div className='flex-1'>
@@ -217,7 +220,10 @@ const Product = () => {
                   preload='metadata'
                   className='w-[560px] h-[578px] tablet:w-[610px] tablet:h-[610px] mobile:w-[343px] mobile:h-[342px]'
                 >
-                  <source src={"/video/video1.mp4"} type='video/mp4' />
+                  <source
+                    src={`/video/${getProduct?.video}.mp4`}
+                    type='video/mp4'
+                  />
                   Your browser does not support the video tag.
                 </video>
               )}
@@ -245,7 +251,7 @@ const Product = () => {
             )}
             <p className='text-[20px] text-[#232323] tracking-[-1px] leading-none'>
               <span className='font-medium'>В упаковке:</span>{" "}
-              {getProduct?.inPacket} штуки
+              {getProduct?.inPacket}
             </p>
           </div>
         </div>
