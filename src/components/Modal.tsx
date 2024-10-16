@@ -48,17 +48,15 @@ const Modal = ({ className }: Props) => {
     const { name, value } = e.target;
 
     if (name === "phone") {
-      if (!value.startsWith("+998")) {
-        setFormData((prevData) => ({
-          ...prevData,
-          phone: "+998 ",
-        }));
-      } else {
-        setFormData((prevData) => ({
-          ...prevData,
-          phone: value,
-        }));
+      // Удаляем все пробелы и предотвращаем стирание +998
+      let phoneValue = value.replace(/\s+/g, ""); // Удаление пробелов
+      if (!phoneValue.startsWith("+998")) {
+        phoneValue = "+998"; // Блокируем удаление префикса
       }
+      setFormData((prevData) => ({
+        ...prevData,
+        phone: phoneValue,
+      }));
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -67,24 +65,29 @@ const Modal = ({ className }: Props) => {
   };
 
   const handlePhoneKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (
-      !(
-        (e.key >= "0" && e.key <= "9") ||
-        e.key === "Backspace" ||
-        e.key === "ArrowLeft" ||
-        e.key === "ArrowRight" ||
-        e.key === "Delete" ||
-        e.key === "Tab"
-      )
-    ) {
+    const isNumberOrControlKey =
+      (e.key >= "0" && e.key <= "9") ||
+      e.key === "Backspace" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight" ||
+      e.key === "Delete" ||
+      e.key === "Tab";
+
+    if (!isNumberOrControlKey) {
+      e.preventDefault(); // Блокируем любые неразрешённые клавиши
+    }
+
+    // Блокируем удаление префикса +998
+    if (e.key === "Backspace" && formData.phone.length <= 4) {
       e.preventDefault();
     }
   };
 
   const handlePhonePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     const pastedData = e.clipboardData.getData("Text");
-    if (!/^\d+$/.test(pastedData)) {
-      e.preventDefault();
+    const cleanedData = pastedData.replace(/\s+/g, ""); // Удаляем все пробелы при вставке
+    if (!/^\d+$/.test(cleanedData)) {
+      e.preventDefault(); // Разрешаем только цифры
     }
   };
 
