@@ -29,7 +29,7 @@ const ProductItem = ({
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 1.5 }}
     >
-      <Link href={`/product?param=${id}`}>
+      <Link href={`/product/${id}`}>
         <div
           className={`relative mb-[25px] group mobile:mb-[-16px] mobile:w-[164px] mobile:px-0 mobile:h-[250px] w-[280px] h-[290px] tablet:w-[290px] ${className}`}
         >

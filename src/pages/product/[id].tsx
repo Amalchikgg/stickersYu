@@ -1,25 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { helvetic } from ".";
 import Container from "@/components/Container";
-import Header from "@/components/Header";
+import Modal from "@/components/Modal";
+import ProductItem from "@/components/ProductItem";
+import { products, ProductType } from "@/constants/mockData";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
-import Modal from "@/components/Modal";
-import ProductItem from "@/components/ProductItem";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import Image from "next/image";
-import { ProductType, products } from "@/constants/mockData";
-import { useSearchParams } from "next/navigation";
+import Header from "@/components/Header";
+import { helvetic } from "..";
 
-const Product = () => {
+const ProductPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const slideRef = useRef<SwiperClass>();
   const [isPlaying, setIsPlaying] = useState(false);
-  const id = useSearchParams().get("param") as string;
   const [isPlayingMobile, $isPlayingMobile] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0); // Текущее положение слайда
   const [randomProducts, setRandomProducts] = useState<ProductType[]>([]);
@@ -27,6 +28,7 @@ const Product = () => {
   const getProduct = useMemo(() => {
     setIsPlaying(false);
     $isPlayingMobile(false);
+    slideRef.current?.slideTo(0);
     return products.find((item) => item.id == Number(id));
   }, [id]);
 
@@ -167,9 +169,13 @@ const Product = () => {
                   width={70}
                   height={70}
                   className={`hover:border border-[#000000] cursor-pointer ${
-                    activeSlide == i + 1 && "border border-black"
+                    (!!getProduct.video
+                      ? activeSlide == i + 1
+                      : activeSlide == i) && "border border-black"
                   }`}
-                  onClick={() => slideRef.current?.slideTo(i + 1)}
+                  onClick={() =>
+                    slideRef.current?.slideTo(!!getProduct.video ? i + 1 : i)
+                  }
                 />
               ))}
             </div>
@@ -326,4 +332,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;
