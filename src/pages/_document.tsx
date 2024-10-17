@@ -7,6 +7,10 @@ export default function Document() {
       <Head>
         <link data-rh='true' rel='icon' href='/images/logo.png' />
         <link rel='apple-touch-icon' href='/images/logo.png' />
+        <meta
+          name='facebook-domain-verification'
+          content='fh5z1nqyuypkkbkqklia5cohyhh05g'
+        />
       </Head>
       <body>
         <Main />
