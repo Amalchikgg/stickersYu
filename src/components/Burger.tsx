@@ -1,15 +1,29 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import Link from "next/link";
 
 const Burger = () => {
-  const [active, $active] = useState(false);
+  const [active, setActive] = useState(false);
 
   const handleActive = () => {
-    $active(!active);
+    setActive(!active);
   };
+
+  // Блокировка прокрутки при открытом меню
+  useEffect(() => {
+    if (active) {
+      document.body.style.overflow = "hidden"; // Блокируем прокрутку страницы
+    } else {
+      document.body.style.overflow = "auto"; // Восстанавливаем прокрутку
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Очистка эффекта при размонтировании компонента
+    };
+  }, [active]);
+
   return (
     <>
       <button onClick={handleActive} className='bg-transparent'>
@@ -42,21 +56,21 @@ const Burger = () => {
           <div className='flex flex-col'>
             <a
               href='#stickers'
-              onClick={handleActive}
+              onClick={handleActive} // Закрываем меню при клике
               className='text-[27px] font-bold text-[#1A1921] tracking-[-1.35px]'
             >
               Наклейки
             </a>
             <a
               href='#caskets'
-              onClick={handleActive}
+              onClick={handleActive} // Закрываем меню при клике
               className='text-[27px] my-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Шкатулки
             </a>
             <a
               href='#goodies'
-              onClick={handleActive}
+              onClick={handleActive} // Закрываем меню при клике
               className='text-[27px] mb-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Ништяки
