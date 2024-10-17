@@ -31,9 +31,11 @@ const Burger = () => {
     e.preventDefault();
     setActive(false); // Закрываем меню
     const section = document.querySelector(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    setTimeout(() => {
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 500);
   };
 
   return (
