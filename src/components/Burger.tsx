@@ -24,6 +24,18 @@ const Burger = () => {
     };
   }, [active]);
 
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string
+  ) => {
+    e.preventDefault();
+    setActive(false); // Закрываем меню
+    const section = document.querySelector(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <button onClick={handleActive} className='bg-transparent'>
@@ -56,21 +68,21 @@ const Burger = () => {
           <div className='flex flex-col'>
             <a
               href='#stickers'
-              onClick={handleActive} // Закрываем меню при клике
+              onClick={(e) => scrollToSection(e, "#stickers")}
               className='text-[27px] font-bold text-[#1A1921] tracking-[-1.35px]'
             >
               Наклейки
             </a>
             <a
               href='#caskets'
-              onClick={handleActive} // Закрываем меню при клике
+              onClick={(e) => scrollToSection(e, "#caskets")}
               className='text-[27px] my-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Шкатулки
             </a>
             <a
               href='#goodies'
-              onClick={handleActive} // Закрываем меню при клике
+              onClick={(e) => scrollToSection(e, "#goodies")}
               className='text-[27px] mb-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Ништяки
