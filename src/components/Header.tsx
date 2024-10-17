@@ -4,7 +4,7 @@ import Modal from "./Modal";
 import Link from "next/link";
 import Burger from "./Burger";
 
-const Header = () => {
+const Header = ({ product }: { product?: boolean }) => {
   return (
     <header className='w-full pt-12 bg-[white] pb-12 mobile:pb-[36px] mobile:pt-7'>
       <div className='bg-[white] w-full flex items-center justify-between mobile:justify-center mobile:gap-x-[141px]'>
@@ -29,19 +29,25 @@ const Header = () => {
         <div className='flex items-center gap-10 tablet:gap-5'>
           <a
             href='#stickers'
-            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+            className={`text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden ${
+              product && "hidden"
+            }`}
           >
             Наклейки
           </a>
           <a
             href='#caskets'
-            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+            className={`text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden ${
+              product && "hidden"
+            }`}
           >
             Шкатулки
           </a>
           <a
             href='#goodies'
-            className='text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden'
+            className={`text-[20px] font-bold text-[#1A1921] tracking-[-1px] tablet:hidden ${
+              product && "hidden"
+            }`}
           >
             Ништяки
           </a>

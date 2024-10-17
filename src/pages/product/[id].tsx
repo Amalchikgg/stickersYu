@@ -57,7 +57,7 @@ const ProductPage = () => {
   return (
     <div className={`${helvetic.className} fade-in`}>
       <Container>
-        <Header />
+        <Header product />
         <div className='flex gap-10 mb-14 tablet:flex-col tablet:gap-8 tablet:mb-8'>
           <div className='w-[558px] tablet:w-[610px] mobile:w-[343px]'>
             <Swiper
