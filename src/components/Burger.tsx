@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import Link from "next/link";
 
@@ -10,36 +10,6 @@ const Burger = () => {
   const handleActive = () => {
     $active(!active);
   };
-
-  const handleLinkClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    targetId: string
-  ) => {
-    e.preventDefault(); // Отключаем стандартное поведение <a> для ручного управления
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      // Прокручиваем до элемента
-      targetElement.scrollIntoView({ behavior: "smooth" });
-
-      // Ожидаем завершения анимации и закрываем меню
-      setTimeout(() => {
-        $active(false);
-      }, 500); // Отложенное закрытие меню после 500 мс
-    }
-  };
-
-  useEffect(() => {
-    if (active) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-
-    return () => {
-      document.body.classList.remove("no-scroll");
-    };
-  }, [active]);
   return (
     <>
       <button onClick={handleActive} className='bg-transparent'>
@@ -72,21 +42,21 @@ const Burger = () => {
           <div className='flex flex-col'>
             <a
               href='#stickers'
-              onClick={(e) => handleLinkClick(e, "stickers")}
+              onClick={handleActive}
               className='text-[27px] font-bold text-[#1A1921] tracking-[-1.35px]'
             >
               Наклейки
             </a>
             <a
               href='#caskets'
-              onClick={(e) => handleLinkClick(e, "caskets")}
+              onClick={handleActive}
               className='text-[27px] my-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Шкатулки
             </a>
             <a
               href='#goodies'
-              onClick={(e) => handleLinkClick(e, "goodies")}
+              onClick={handleActive}
               className='text-[27px] mb-8 font-bold text-[#1A1921] tracking-[-1.35px] '
             >
               Ништяки
