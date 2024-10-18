@@ -18,6 +18,7 @@ const Form = () => {
 
   const [status, setStatus] = useState<string>("");
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
+  const [loading, $loading] = useState(false);
 
   const validatePhoneNumber = (phone: string) => {
     const cleanedPhone = phone.replace(/\s+/g, ""); // Удаляем все пробелы
@@ -117,11 +118,12 @@ const Form = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    if (!validateForm() || loading) {
       return;
     }
 
     try {
+      $loading(true);
       const response = await fetch("/api/sendToTelegram", {
         method: "POST",
         headers: {
@@ -135,11 +137,14 @@ const Form = () => {
         setStatus("Сообщение успешно отправлено!");
         setFormData({ name: "", phone: "+998", telegram_username: "" });
         setErrors({});
+        $loading(false);
       } else {
         setStatus("Ошибка отправки: " + data.error);
+        $loading(false);
       }
     } catch (error) {
       setStatus("Произошла ошибка: " + (error as Error).message);
+      $loading(false);
     }
   };
 
@@ -211,10 +216,14 @@ const Form = () => {
           <button
             type='submit'
             className={`w-full h-[73px] mobile:h-[42px] mobile:text-[14px] mobile:tracking-[-0.7px] flex items-center pl-[22px] justify-start bg-[#1A1921] text-white font-medium tracking-[-1px] text-[20px] ${
-              status && "!bg-[#027831]"
-            }`}
+              status && "!bg-[#027831] pointer-events-none cursor-not-allowed"
+            } ${loading && "opacity-50 cursor-not-allowed"}`}
           >
-            {status ? "Заявка оставлена" : "Оставить заявку"}
+            {status
+              ? "Заявка оставлена"
+              : loading
+              ? "Отправка..."
+              : "Оставить заявку"}
           </button>
         </div>
         <Image
