@@ -17,7 +17,7 @@ const Modal = ({ className }: Props) => {
   const [open, $open] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    phone: "+998 ",
+    phone: "+998",
     telegram_username: "",
   });
   const [status, setStatus] = useState<string>("");
