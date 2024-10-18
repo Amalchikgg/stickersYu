@@ -13,7 +13,7 @@ export default async function handler(
     return res.status(405).json({ error: "Метод не разрешен." });
   }
 
-  const { name, phone } = req.body;
+  const { name, phone, telegram_username } = req.body;
 
   if (!name || !phone) {
     return res.status(400).json({ error: "Имя и телефон обязательны." });
@@ -27,7 +27,7 @@ export default async function handler(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phone }),
+        body: JSON.stringify({ name, phone, telegram_username }),
       }
     );
 
@@ -36,11 +36,9 @@ export default async function handler(
     } else {
       const errorText = await response.text();
       console.error("Ошибка сервера:", errorText);
-      return res
-        .status(response.status)
-        .json({
-          error: `Ошибка отправки заявки. Код ошибки: ${response.status}`,
-        });
+      return res.status(response.status).json({
+        error: `Ошибка отправки заявки. Код ошибки: ${response.status}`,
+      });
     }
   } catch (error) {
     console.error("Ошибка при отправке запроса:", error);

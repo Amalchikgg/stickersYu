@@ -6,12 +6,14 @@ import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
 type FormData = {
   name: string;
   phone: string;
+  telegram_username: string;
 };
 
 const Form = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "+998",
+    telegram_username: "",
   });
 
   const [status, setStatus] = useState<string>("");
@@ -56,6 +58,18 @@ const Form = () => {
     } else {
       setFormData({ ...formData, [name]: value });
     }
+    if (name === "telegram_username") {
+      let userNameValue = value.replace(/\s+/g, "");
+      if (!userNameValue.startsWith("@")) {
+        userNameValue = "@" + userNameValue; // Блокируем удаление префикса
+      }
+      setFormData((prevData) => ({
+        ...prevData,
+        telegram_username: userNameValue,
+      }));
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
 
     setErrors({ ...errors, [name]: undefined });
   };
@@ -75,6 +89,13 @@ const Form = () => {
 
     // Блокируем удаление префикса +998
     if (e.key === "Backspace" && formData.phone.length <= 4) {
+      e.preventDefault();
+    }
+  };
+
+  const handleUsernameKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // Блокируем удаление префикса +998
+    if (e.key === "Backspace" && formData.phone.length <= 1) {
       e.preventDefault();
     }
   };
@@ -106,7 +127,7 @@ const Form = () => {
       const data = await response.json();
       if (response.ok) {
         setStatus("Сообщение успешно отправлено!");
-        setFormData({ name: "", phone: "+998" });
+        setFormData({ name: "", phone: "+998", telegram_username: "" });
         setErrors({});
       } else {
         setStatus("Ошибка отправки: " + data.error);
@@ -166,6 +187,20 @@ const Form = () => {
               {errors.phone}
             </p>
           )}
+
+          <input
+            name='telegram_username'
+            value={formData.telegram_username}
+            onChange={handleChange}
+            onKeyDown={handleUsernameKeyDown}
+            onPaste={handlePhonePaste}
+            placeholder='Telegram-username (необязательно)'
+            className={`outline-none w-full h-[73px] mb-[26px] mobile:mb-4 text-lg mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]`}
+          />
+
+          <p className='font-medium text-[20px] tracking-[-1px] text-[#949292] mb-[26px] mobile:mb-4 mobile:text-[14px] mobile:tracking-[]'>
+            Не дозвонимся — напишем в Telegram.
+          </p>
 
           <button
             type='submit'
