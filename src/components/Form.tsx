@@ -88,14 +88,20 @@ const Form = () => {
     }
 
     // Блокируем удаление префикса +998
-    if (e.key === "Backspace" && formData.phone.length <= 4) {
+    if (
+      (e.key === "Backspace" && formData.phone.length <= 4) ||
+      (e.key === "Delete" && formData.phone.length <= 4)
+    ) {
       e.preventDefault();
     }
   };
 
   const handleUsernameKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // Блокируем удаление префикса +998
-    if (e.key === "Backspace" && formData.phone.length <= 1) {
+    if (
+      (e.key === "Backspace" && formData.phone.length <= 1) ||
+      (e.key === "Delete" && formData.phone.length <= 1)
+    ) {
       e.preventDefault();
     }
   };
