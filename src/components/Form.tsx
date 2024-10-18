@@ -195,7 +195,7 @@ const Form = () => {
             onKeyDown={handleUsernameKeyDown}
             onPaste={handlePhonePaste}
             placeholder='Telegram-username (необязательно)'
-            className={`outline-none w-full h-[73px] mb-[26px] mobile:mb-4 text-lg mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]`}
+            className={`outline-none w-full mobile:text-sm h-[73px] mb-[26px] mobile:mb-4 text-lg mobile:h-[42px] border border-[#696868] pl-[21px] placeholder:text-[#949292]`}
           />
 
           <p className='font-medium text-[20px] tracking-[-1px] text-[#949292] mb-[26px] mobile:mb-4 mobile:text-[14px] mobile:tracking-[]'>
